@@ -12,23 +12,50 @@ namespace ComputerScience
 
         public BinaryTreeNode<T> RightChild { get; set; }
 
-        public BinaryTreeNode<T> RightSibling
+        public BinaryTreeNode<T> Min
         {
             get
             {
-                if (Parent == null)
+                var curr = this;
+                while (curr != null && curr.LeftChild != null)
                 {
-                    return null;
+                    curr = curr.LeftChild;
                 }
-
-                if (Parent.RightChild == null)
-                {
-                    return null;
-                }
-
-                return Parent.RightChild;
+                return curr;
             }
         }
+
+        public BinaryTreeNode<T> Max
+        {
+            get
+            {
+                var curr = this;
+                while (curr != null && curr.RightChild != null)
+                {
+                    curr = curr.RightChild;
+                }
+                return curr;
+            }
+        }
+
+
+        //public BinaryTreeNode<T> RightSibling
+        //{
+        //    get
+        //    {
+        //        if (Parent == null)
+        //        {
+        //            return null;
+        //        }
+
+        //        if (Parent.RightChild == null)
+        //        {
+        //            return null;
+        //        }
+
+        //        return Parent.RightChild;
+        //    }
+        //}
 
         public BinaryTreeNode<T> Root // todo: implement set Root
         {
@@ -72,7 +99,7 @@ namespace ComputerScience
                 this.Value = newValue;
             }
 
-            if (newValue.CompareTo(Value) <= 0)
+            if (newValue.CompareTo(Value) < 0)
             {
                 if (LeftChild == null)
                 {

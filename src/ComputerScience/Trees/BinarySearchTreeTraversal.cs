@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -54,19 +55,55 @@ namespace ComputerScience.Trees
         }
 
         public static void LevelPrint<T>(BinaryTreeNode<T> btree) where T : IComparable
-        {
-            var levelQueue = new Queue<T>();
-
-            if (btree.Parent == null)
+        {            
+            if (btree == null)
             {
-                levelQueue.Enqueue(btree.Value);
+                return;
             }
 
-            levelQueue.Enqueue(btree.LeftChild.Value);
-            levelQueue.Enqueue(btree.RightChild.Value);
+            int currentLevel = 0;
 
+            var levelsDictionary = new SortedDictionary<int, Queue<T>>();
+            levelsDictionary[currentLevel] = new Queue<T>();
+            levelsDictionary[currentLevel].Enqueue(btree.Value);
 
+            LevelPrintInner(btree.LeftChild, levelsDictionary, currentLevel + 1);
+            LevelPrintInner(btree.RightChild, levelsDictionary, currentLevel + 1);
 
+            var highestLevel = levelsDictionary.Keys.Count - 1;
+
+            foreach (var levelAndLevelQueue in levelsDictionary)
+            {
+                var level = levelAndLevelQueue.Key;
+                var levelQueue = levelAndLevelQueue.Value;
+
+                var offSet = new string(' ', highestLevel - level);
+                Console.Write(offSet);
+
+                while (levelQueue.Count > 0)
+                {                                                            
+                    Console.Write(" " + levelQueue.Dequeue());
+                }
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+        }
+
+        private static void LevelPrintInner<T>(BinaryTreeNode<T> btree, SortedDictionary<int, Queue<T>> levelsDictionary, int currentLevel) where T : IComparable
+        {
+            if (btree == null)
+            {
+                return;
+            }
+
+            if (!levelsDictionary.ContainsKey(currentLevel))
+            {
+                levelsDictionary[currentLevel] = new Queue<T>();                
+            }
+            levelsDictionary[currentLevel].Enqueue(btree.Value);
+
+            LevelPrintInner(btree.LeftChild, levelsDictionary, currentLevel + 1);
+            LevelPrintInner(btree.RightChild, levelsDictionary, currentLevel + 1);
         }
     }
 }

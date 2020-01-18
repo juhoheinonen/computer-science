@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerScience", "src\Comp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerScienceTests", "tests\ComputerScienceTests\ComputerScienceTests.csproj", "{D2E16957-B134-4AE0-AA81-F1FBBF082A7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeTraining", "src\TreeTraining\TreeTraining.csproj", "{BF0A0556-AF41-422E-A638-2452591E8679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainingRunner", "src\TreeTraining\TrainingRunner.csproj", "{BF0A0556-AF41-422E-A638-2452591E8679}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
