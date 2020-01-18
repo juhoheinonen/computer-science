@@ -19,7 +19,7 @@ namespace TreeTraining
             {
                 btree.Insert(inputInt);
             }
-
+            
             Console.WriteLine("Root: " + btree.Root);
             Console.WriteLine();
 
@@ -64,44 +64,7 @@ namespace TreeTraining
                 Console.WriteLine("Level traversal:");
                 Console.WriteLine();
                 BinarySearchTreeTraversal.LevelPrint(tree);
-            }
-
-            //var input = new int[9];
-            //for (int i = 0; i < input.Length; i++)
-            //{
-            //    input[i] = i + 1;
-            //}
-
-            //BinaryTreeNode<int> tree = CreateMinimalTree(input);
-
-            //Console.WriteLine("Level traversal:");
-            //Console.WriteLine();
-            //BinarySearchTreeTraversal.LevelPrint(tree);
-
-
-            //input = new int[0];
-            //for (int i = 0; i < input.Length; i++)
-            //{
-            //    input[i] = i + 1;
-            //}
-
-            //tree = CreateMinimalTree(input);
-            //Console.WriteLine("Level traversal:");
-            //Console.WriteLine();
-            //BinarySearchTreeTraversal.LevelPrint(tree);
-
-
-            //input = new int[1];
-            //for (int i = 0; i < input.Length; i++)
-            //{
-            //    input[i] = i + 1;
-            //}
-
-            //tree = CreateMinimalTree(input);
-            //Console.WriteLine("Level traversal:");
-            //Console.WriteLine();
-            //BinarySearchTreeTraversal.LevelPrint(tree);
-
+            }       
         }
 
         private BinaryTreeNode<int> CreateMinimalTree(int[] a)

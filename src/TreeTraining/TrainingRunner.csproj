@@ -9,4 +9,10 @@
     <ProjectReference Include="..\ComputerScience\ComputerScience.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="data\kotus-sanalista_v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

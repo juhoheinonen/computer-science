@@ -1,6 +1,10 @@
-﻿using System;
+﻿using ComputerScience;
+using ComputerScience.Trees;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Xml.Linq;
 using TrainingRunner;
 
 namespace TreeTraining
@@ -10,33 +14,10 @@ namespace TreeTraining
     {
         static void Main(string[] args)
         {
-            var trainer = new BinaryTreeTrainer();
-            trainer.MinimalTree();
-
-            //var trainer = new GraphTrainer();
-            //trainer.Run(args);
+            XDocument xDoc = XDocument.Load("data\\kotus-sanalista_v1.xml");
+            var input = xDoc.Descendants("s").Select(x => x.Value).ToList();
             
-            //BinarySearchTreeRunning(args);
-        }
-
-        private static void BinarySearchTreeRunning(string[] args)
-        {
-            var trainer = new BinaryTreeTrainer();
-
-            if (args.Length == 0)
-            {
-                Random r = new Random();
-                var input = new List<int>();
-
-                for (int i = 0; i < r.Next(25, 30); i++)
-                {
-                    input.Add(r.Next(-10, 100));
-                }
-
-                Console.WriteLine("input: " + string.Join(',', input));
-
-                trainer.Run(input.ToArray());
-            }
-        }
+            TrieTester.Test(input, args);
+        }        
     }
 }
